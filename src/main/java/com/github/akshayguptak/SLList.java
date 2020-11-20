@@ -12,43 +12,33 @@ public class SLList {
 	}
     }
 
-    private IntNode first;
+    private IntNode sentinel;
     private int size;
 
-    public void SLList() {
-	first = null;
+    public SLList() {
+	sentinel  = new IntNode(0, null);
 	size = 0;
     }
 
-    public void SLList(int x) {
-	first = new IntNode(x, null);
-	size = 1;
-    }
-
     public void addFirst(int x) {
-	first  = new IntNode(x, first);
+	sentinel.next  = new IntNode(x, sentinel.next);
 	size += 1;
     }
 
     public int getFirst() {
-	return first.item;
+	return sentinel.next.item;
     }
 
     public void addLast(int x) {
 	size += 1;
 
-	if (first == null) {
-	    first = new IntNode(x, null);
-	    return;
-	}
-	
-	IntNode p = first;
+	IntNode p = sentinel;
 
-	while (p != null) {
+	while (p.next != null) {
 	    p = p.next;
 	}
 
-	p = new IntNode(x, null);
+	p.next = new IntNode(x, null);
     }
     
 }
