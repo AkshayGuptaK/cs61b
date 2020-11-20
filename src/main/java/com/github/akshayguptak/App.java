@@ -1,13 +1,11 @@
 package com.github.akshayguptak;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        SLList L = new SLList();
+	L.addLast(5);
+	System.out.print(L.getFirst());
     }
 }
