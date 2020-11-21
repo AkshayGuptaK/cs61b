@@ -1,59 +1,59 @@
 package com.github.akshayguptak;
 
-public class DLList {
+public class DLList<T> {
     
-    private static class IntNode {
-	public int item;
-	public IntNode next;
-	public IntNode prev;
+    private class Node {
+	public T item;
+	public Node next;
+	public Node prev;
 
-	public IntNode(int i, IntNode n, IntNode p) {
+	public Node(T i, Node n, Node p) {
 	    item = i;
 	    next = n;
 	    prev = p;
 	}
     }
 
-    private IntNode sentinel;
+    private Node sentinel;
     private int size;
 
     public DLList() {
-	sentinel  = new IntNode(0, null, null);
+	sentinel  = new Node(null, null, null);
 	sentinel.next = sentinel;
 	sentinel.prev = sentinel;
 	size = 0;
     }
 
-    public void addFirst(int x) {
-	IntNode currentFirst = sentinel.next;
-	sentinel.next  = new IntNode(x, currentFirst, sentinel);
+    public void addFirst(T x) {
+	Node currentFirst = sentinel.next;
+	sentinel.next  = new Node(x, currentFirst, sentinel);
 	currentFirst.prev = sentinel.next;
 	size += 1;
     }
 
-    public int getFirst() {
+    public T getFirst() {
 	return sentinel.next.item;
     }
 
     public void removeFirst() {
-	IntNode second = sentinel.next.next;
+	Node second = sentinel.next.next;
 	sentinel.next = second;
 	second.prev = sentinel;
     }
 
-    public void addLast(int x) {
-	IntNode currentLast = sentinel.prev;
-	sentinel.prev = new IntNode(x, sentinel, currentLast);
+    public void addLast(T x) {
+	Node currentLast = sentinel.prev;
+	sentinel.prev = new Node(x, sentinel, currentLast);
 	currentLast.next = sentinel.prev;
 	size += 1;
     }
 
-    public int getLast() {
+    public T getLast() {
 	return sentinel.prev.item;
     }
 
     public void removeLast() {
-	IntNode secondLast = sentinel.prev.prev;
+	Node secondLast = sentinel.prev.prev;
 	sentinel.prev = secondLast;
         secondLast.next = sentinel;
     }

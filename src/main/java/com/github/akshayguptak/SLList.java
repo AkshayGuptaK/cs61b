@@ -1,44 +1,44 @@
 package com.github.akshayguptak;
 
-public class SLList {
+public class SLList<T> {
     
-    private static class IntNode {
-	public int item;
-	public IntNode next;
+    private class Node {
+	public T  item;
+	public Node next;
 
-	public IntNode(int i, IntNode n) {
+	public Node(T i, Node n) {
 	    item = i;
 	    next = n;
 	}
     }
 
-    private IntNode sentinel;
+    private Node sentinel;
     private int size;
 
     public SLList() {
-	sentinel  = new IntNode(0, null);
+	sentinel  = new Node(null, null);
 	size = 0;
     }
 
-    public void addFirst(int x) {
-	sentinel.next  = new IntNode(x, sentinel.next);
+    public void addFirst(T x) {
+	sentinel.next  = new Node(x, sentinel.next);
 	size += 1;
     }
 
-    public int getFirst() {
+    public T getFirst() {
 	return sentinel.next.item;
     }
 
-    public void addLast(int x) {
+    public void addLast(T x) {
 	size += 1;
 
-	IntNode p = sentinel;
+	Node p = sentinel;
 
 	while (p.next != null) {
 	    p = p.next;
 	}
 
-	p.next = new IntNode(x, null);
+	p.next = new Node(x, null);
     }
     
 }
