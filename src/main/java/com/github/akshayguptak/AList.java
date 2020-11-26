@@ -28,6 +28,7 @@ public class AList<Item> {
 
     public Item removeLast() {
 	Item last  = getLast();
+	items[size] = null;
 	size -= 1;
 
 	if (size / items.length < usageRatio) {

@@ -4,10 +4,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        AList<String> L = new AList<>();
+        SLList<String> L = new SLList<>();
 	L.addLast("a");
-	L.removeLast();
-	L.addLast("capacity");
-	System.out.print(L.getLast());
+	L.addLast("b");
+	L.addLast("c");
+	L.addLast("d");
+	L.reverse();
+	L.print();
     }
 }
